@@ -1,8 +1,83 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="col-6">
+        <h3 class="">Bar Char</h3>
+        <canvas id="barChart" width="200" height="110" style="width:197px; height:110px;"></canvas>
+    </div>
+    <div class="col-6">
+        <h3 class="">Pie Char</h3>
+        <canvas id="pieChart" width="100" height="110" style="width:100px; height:110px;"></canvas>
+    </div>
+    <div class="col-6">
+        <h3 class="">My Char</h3>
+        <canvas id="myChart" width="100" height="110" style="width:100px; height:110px;"></canvas>
+    </div>
 </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Orders/GetToTalOrders",
+                data: "",
+                contentType: "application/json; charset=utf8",
+                dataType: "json",
+                success: OnSuccess,
+            });
+
+            function OnSuccess(data) {
+                const barChart = document.getElementById('barChart');
+            const pieChart = document.getElementById('pieChart');
+            const myChart = document.getElementById('myChart');
+
+                var _data = data;
+                var _labels = _data[0];
+                var _ChartData = _data[1];
+                var colors = ['Red', 'Blue', 'Green', 'Yellow', 'Purple'];
+
+                new Chart(barChart, {
+                    type: 'bar',
+                    data: {
+                        labels: _labels,
+                        datasets: [{
+                            backgroundColor: colors,
+                            data: _ChartData,
+                            borderWidth: 1,
+                        }]
+                    }
+                });
+
+            new Chart(pieChart, {
+                type: 'pie',
+                data: {
+                    labels: _labels,
+                    datasets: [{
+                        backgroundColor: colors,
+                        data: _ChartData,
+                        borderWidth: 1,
+                    }]
+                }
+            });
+            new Chart(myChart, {
+                type: 'my',
+                data: {
+                    labels: _labels,
+                    datasets: [{
+                        backgroundColor: colors,
+                        data: _ChartData,
+                        borderWidth: 1,
+                    }]
+                }
+            });
+            }
+        });
+
+    </script>

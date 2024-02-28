@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RolebasedAuthorization.Models;
 
 namespace RolebasedAuthorization.Data
 {
@@ -9,5 +10,6 @@ namespace RolebasedAuthorization.Data
             : base(options)
         {
         }
+        public DbSet<RolebasedAuthorization.Models.Orders> Orders { get; set; } = default!;
     }
 }
