@@ -1,0 +1,25 @@
+# Đã bỏ qua các thư mục obj và bin
+obj/
+bin/
+
+# Các tệp và thư mục cụ thể cần được bỏ qua
+.vs/RolebasedAuthorization/FileContentIndex
+*.user
+*.suo
+*.cache
+*.log
+*.vscode/
+.DS_Store
+Thumbs.db
+.idea/
+*.config
+*.bak
+*.key
+binaries/
+artifacts/
+node_modules/
+packages/
+*.dll
+publish/
+publishOutput/
+*.pdb
