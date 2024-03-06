@@ -13,10 +13,12 @@ namespace RolebasedAuthorization.Controllers
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public OrdersController(ApplicationDbContext context)
+        public OrdersController(ApplicationDbContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Orders
@@ -67,16 +69,43 @@ namespace RolebasedAuthorization.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MonthName,TotalOrders")] Orders orders)
+        public async Task<IActionResult> Create([Bind("Id,MonthName,TotalOrders")] Orders orders, IFormFile ImageFile)
         {
-            if (ModelState.IsValid)
+            if (true)
             {
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+
+                if (ImageFile != null && ImageFile.Length > 0)
+                {
+                    var fileExtension = Path.GetExtension(ImageFile.FileName).ToLowerInvariant();
+
+                    // Checking if the file has a valid extension
+                    if (string.IsNullOrEmpty(fileExtension) || !allowedExtensions.Contains(fileExtension))
+                    {
+                        return BadRequest("Invalid file extension. Allowed extensions are: " + string.Join(", ", allowedExtensions));
+                    }
+
+                    // Change the folder path
+                    var uploadFolderPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+                    Directory.CreateDirectory(uploadFolderPath);
+
+                    var fileName = Path.GetRandomFileName() + fileExtension;
+                    var filePath = Path.Combine(uploadFolderPath, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await ImageFile.CopyToAsync(stream);
+                    }
+
+                    orders.Image = "/uploads/" + fileName;
+                }
                 _context.Add(orders);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(orders);
         }
+
 
         // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)

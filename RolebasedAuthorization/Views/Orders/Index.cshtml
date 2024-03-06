@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.MonthName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TotalOrders)
             </th>
             <th></th>
@@ -27,6 +30,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MonthName)
             </td>
+                <td class="">
+                    <img src="@Html.DisplayFor(modelItem => item.Image)" width="60" style="max-height: 100px; object-fit: cover" alt="img">
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalOrders)
             </td>

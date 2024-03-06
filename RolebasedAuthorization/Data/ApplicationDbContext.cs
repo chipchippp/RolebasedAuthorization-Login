@@ -11,5 +11,8 @@ namespace RolebasedAuthorization.Data
         {
         }
         public DbSet<RolebasedAuthorization.Models.Orders> Orders { get; set; } = default!;
+        public DbSet<RolebasedAuthorization.Models.Student> Student { get; set; } = default!;
+        public DbSet<RolebasedAuthorization.Models.Enrollment> Enrollment { get; set; } = default!;
+        public DbSet<RolebasedAuthorization.Models.Course> Course { get; set; } = default!;
     }
 }

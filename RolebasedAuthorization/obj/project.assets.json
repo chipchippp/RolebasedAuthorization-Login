@@ -11984,11 +11984,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization\\RolebasedAuthorization\\RolebasedAuthorization.csproj",
+      "projectUniqueName": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization-Login\\RolebasedAuthorization\\RolebasedAuthorization.csproj",
       "projectName": "RolebasedAuthorization",
-      "projectPath": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization\\RolebasedAuthorization\\RolebasedAuthorization.csproj",
+      "projectPath": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization-Login\\RolebasedAuthorization\\RolebasedAuthorization.csproj",
       "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization\\RolebasedAuthorization\\obj\\",
+      "outputPath": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization-Login\\RolebasedAuthorization\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",

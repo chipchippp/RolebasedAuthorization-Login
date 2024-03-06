@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RolebasedAuthorization.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
 
     public class RolesController : Controller
     {

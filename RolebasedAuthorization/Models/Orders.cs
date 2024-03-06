@@ -7,7 +7,9 @@ namespace RolebasedAuthorization.Models
         [Key]
         public int Id { get; set; }
         public string MonthName { get; set; }
+        [StringLength(255)]
+        public string Image { get; set; }
         public int TotalOrders { get; set; }
-
+        
     }
 }
