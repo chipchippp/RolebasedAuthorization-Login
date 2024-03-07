@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RolebasedAuthorization.Data;
 using RolebasedAuthorization.Models;
 
@@ -65,36 +66,36 @@ namespace RolebasedAuthorization.Controllers
         }
 
         // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MonthName,TotalOrders")] Orders orders, IFormFile ImageFile)
+        public async Task<IActionResult> Create([Bind("Id,MonthName,TotalOrders")] Orders orders, IFormFile Image)
         {
             if (true)
             {
-                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
 
-                if (ImageFile != null && ImageFile.Length > 0)
+                var allowedExtenstions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+
+                var filePaths = new List<string>();
+                // Check if the file has a valid extensions
+                var fileExtension = Path.GetExtension(Image.FileName).ToLowerInvariant();
+                if (string.IsNullOrEmpty(fileExtension) || !allowedExtenstions.Contains(fileExtension))
                 {
-                    var fileExtension = Path.GetExtension(ImageFile.FileName).ToLowerInvariant();
+                    return BadRequest("Invalid file extension. Allowed extensions are: " + string.Join(", ", allowedExtenstions));
+                };
 
-                    // Checking if the file has a valid extension
-                    if (string.IsNullOrEmpty(fileExtension) || !allowedExtensions.Contains(fileExtension))
-                    {
-                        return BadRequest("Invalid file extension. Allowed extensions are: " + string.Join(", ", allowedExtensions));
-                    }
-
+                if (Image.Length > 0)
+                {
                     // Change the folder path
                     var uploadFolderPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
                     Directory.CreateDirectory(uploadFolderPath);
 
                     var fileName = Path.GetRandomFileName() + fileExtension;
                     var filePath = Path.Combine(uploadFolderPath, fileName);
+                    filePaths.Add(filePath);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await ImageFile.CopyToAsync(stream);
+                        await Image.CopyToAsync(stream);
                     }
 
                     orders.Image = "/uploads/" + fileName;
@@ -105,7 +106,6 @@ namespace RolebasedAuthorization.Controllers
             }
             return View(orders);
         }
-
 
         // GET: Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)

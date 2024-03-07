@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RolebasedAuthorization")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d28121779daefb4d5fdee0f3bb5035e67dfe4ae7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+716ec98f31972135e6386f3f8f4ca21a164e2ccf")]
 [assembly: System.Reflection.AssemblyProductAttribute("RolebasedAuthorization")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RolebasedAuthorization")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
