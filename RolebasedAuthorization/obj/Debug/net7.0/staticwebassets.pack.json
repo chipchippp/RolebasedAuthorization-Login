@@ -245,6 +245,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization-Login\\RolebasedAuthorization\\wwwroot\\uploads\\1stwiwzd.5y4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1stwiwzd.5y4.jpg"
+    },
+    {
+      "Id": "C:\\APTECH2210A\\SEM3\\RolebasedAuthorization-Login\\RolebasedAuthorization\\wwwroot\\uploads\\4grycqpj.3sp.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4grycqpj.3sp.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.RolebasedAuthorization.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

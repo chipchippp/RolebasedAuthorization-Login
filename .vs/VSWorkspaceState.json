@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\RolebasedAuthorization",
+    "\\RolebasedAuthorization\\Controllers",
     "\\RolebasedAuthorization\\Views",
     "\\RolebasedAuthorization\\Views\\Shared"
   ],
-  "SelectedNode": "\\RolebasedAuthorization\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\RolebasedAuthorization\\Controllers\\OrdersController.cs",
   "PreviewInSolutionExplorer": false
 }
